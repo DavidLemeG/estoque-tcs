@@ -1,5 +1,7 @@
 package br.com.springboot.DTO;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,29 +10,54 @@ import br.com.springboot.models.Pedido;
 
 public class PedidoVendaDTO {
   
-  private Pedido pedidoVenda;
+  private Long idPedido;
 
-  private List<ItensPedido> itensPedido = new ArrayList<ItensPedido>();
+  private LocalDate dtPedido;
 
-  public PedidoVendaDTO(Pedido pedido) {
-		this.pedidoVenda = pedido;
-		this.itensPedido = pedido.getItens();
-	}
+  private Long idCliente;
 
-  public Pedido getPedidoVenda() {
-    return this.pedidoVenda;
+  private BigDecimal valorTotal;
+
+  private List<Long> idProdutos;
+
+  public Long getIdPedido() {
+    return this.idPedido;
   }
 
-  public void setPedidoVenda(Pedido pedidoVenda) {
-    this.pedidoVenda = pedidoVenda;
+  public void setIdPedido(Long idPedido) {
+    this.idPedido = idPedido;
   }
 
-  public List<ItensPedido> getItensPedido() {
-    return this.itensPedido;
+  public LocalDate getDtPedido() {
+    return this.dtPedido;
   }
 
-  public void setItensPedido(List<ItensPedido> itensPedido) {
-    this.itensPedido = itensPedido;
+  public void setDtPedido(LocalDate dtPedido) {
+    this.dtPedido = dtPedido;
+  }
+
+  public Long getIdCliente() {
+    return this.idCliente;
+  }
+
+  public void setIdCliente(Long idCliente) {
+    this.idCliente = idCliente;
+  }
+
+  public BigDecimal getValorTotal() {
+    return this.valorTotal;
+  }
+
+  public void setValorTotal(BigDecimal valorTotal) {
+    this.valorTotal = valorTotal;
+  }
+
+  public List<Long> getIdProdutos() {
+    return this.idProdutos;
+  }
+
+  public void setIdProdutos(List<Long> idProdutos) {
+    this.idProdutos = idProdutos;
   }
 
 }

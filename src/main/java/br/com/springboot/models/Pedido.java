@@ -30,9 +30,8 @@ public class Pedido {
   @Column(name = "dt_pedido")
   private LocalDate dtPedido;
 
-  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id_cliente")
-  private Cliente idCliente;
+  private Long idCliente;
 
   @Column(name = "valor_total")
   private BigDecimal valorTotal;
@@ -41,6 +40,10 @@ public class Pedido {
   private List<ItensPedido> itens = new ArrayList<ItensPedido>();
 
   public Pedido() {
+  }
+
+  public void addItemPedido(ItensPedido item){
+    this.itens.add(item);
   }
 
   public Long getIdPedido() {
@@ -59,11 +62,11 @@ public class Pedido {
     this.dtPedido = dtPedido;
   }
 
-  public Cliente getCliente() {
+  public Long getCliente() {
     return this.idCliente;
   }
 
-  public void setCliente(Cliente cliente) {
+  public void setCliente(Long cliente) {
     this.idCliente = cliente;
   }
 

@@ -23,14 +23,14 @@ public class ItensPedido {
   @ManyToOne
   private Pedido pedido;
 
-  @ManyToOne
-  private Produto idProduto;
+  private Long idProduto;
 
   private Double quantidade;
 
   private BigDecimal valor;
 
-  public ItensPedido() {
+  public ItensPedido(Long idProduto) {
+    this.idProduto = idProduto;
   }
 
   public Long getIdItensPedido() {
@@ -49,11 +49,11 @@ public class ItensPedido {
     this.pedido = pedido;
   }
 
-  public Produto getProduto() {
+  public Long getProduto() {
     return this.idProduto;
   }
 
-  public void setProduto(Produto produto) {
+  public void setProduto(Long produto) {
     this.idProduto = produto;
   }
 

@@ -45,9 +45,19 @@ public class PedidoController {
   }
 
   @PostMapping("/")
-  public ResponseEntity<Object> createPedido(@RequestBody Pedido pedido) {
+  public ResponseEntity<Object> createPedido(@RequestBody PedidoVendaDTO pedidoRequest) {
 
-    Pedido pedVenda = new Pedido();
+    Pedido pedido = new Pedido();
+    pedido.setCliente(pedidoRequest.getIdCliente());
+    pedido.setDtPedido(pedidoRequest.getDtPedido());
+    pedido.setValorTotal(pedidoRequest.getValorTotal());
+
+    for (Long idProduto : pedidoRequest.getIdProdutos()) {
+      pedido.addItemPedido(new ItensPedido(idProduto));
+    }
+
+
+
     // pedVenda.setItens(pedidoVendaDTO.getItensPedido());
     
     // for (ItensPedido item : pedidoVendaDTO.getItensPedido()) {
@@ -64,7 +74,7 @@ public class PedidoController {
     // pedidoVendaDTO.getPedidoVenda().setValorTotal(total);
     
     
-    this.pedidoRepository.save(pedVenda);
+    this.pedidoRepository.save(pedido);
 
     return new ResponseEntity<Object>(pedido, HttpStatus.ACCEPTED);
   }
