@@ -1,0 +1,314 @@
+{
+	"info": {
+		"_postman_id": "f4cf964a-2ef6-4379-8962-f4de2878b590",
+		"name": "Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetPedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedido/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedido",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllPedidos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pedido/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedido",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreatePedido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dtPedido\": \"2021-10-18\",\r\n    \"valorTotal\": 30000,\r\n    \"itens\": [\r\n\t\t\t{\r\n      \t\"quantidade\": 2,\r\n      \t\"valor\": 15000,\r\n      \t\"produto\": {\r\n\t\t\t\t\t \"idProduto\": 2\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t{\r\n      \t\"quantidade\": 2,\r\n      \t\"valor\": 15000,\r\n      \t\"produto\": {\r\n\t\t\t\t\t \"idProduto\": 3\r\n\t\t\t\t}\r\n\t\t\t}\r\n\r\n\t\t],\r\n    \"cliente\": {\r\n\t\t\t \"idCliente\": 1\r\n\t\t}\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pedido/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pedido",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProduto",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produto/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllProdutos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produto/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produto",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProdutos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"descricao\": \"Iphone X\",\r\n\t\"tipoProduto\": \"Celular/SmartPhone\",\r\n\t\"valor\": 5000.00,\r\n\t\"quantidadeEstoque\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/produto/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produto",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProdutos",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"descricao\": \"Iphone 12\",\r\n\t\"tipoProduto\": \"Celular/SmartPhone\",\r\n\t\"valor\": 5000.00,\r\n\t\"quantidadeEstoque\": 17\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/produto/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProdutos",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/produto/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"produto",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllClientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cliente/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nome\": \"Teste\",\r\n\t\"cpf\": \"519.714.738-55\",\r\n\t\"sexo\": \"M\",\r\n\t\"logradouro\": \"Rua Teste\",\r\n\t\"cep\": \"09112-090\",\r\n\t\"bairro\": \"Bairro teste\",\r\n\t\"cidade\": \"Santo André\",\r\n\t\"uf\": \"SP\",\r\n\t\"telefone\": \"(11) 4333-2423\",\r\n\t\"celular\": \"(11) 95333-5086\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cliente/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"nome\": \"Teste\",\r\n\t\"cpf\": \"519.714.738-55\",\r\n\t\"sexo\": \"M\",\r\n\t\"logradouro\": \"Rua Teste\",\r\n\t\"cep\": \"09112-090\",\r\n\t\"bairro\": \"Bairro teste\",\r\n\t\"cidade\": \"Santo André\",\r\n\t\"uf\": \"SP\",\r\n\t\"telefone\": \"(11) 4333-2423\",\r\n\t\"celular\": \"(11) 95333-5086\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cliente/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cliente",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
