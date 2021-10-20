@@ -32,7 +32,7 @@ public class Pedido {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id_cliente")
-  private Cliente idCliente;
+  private Cliente cliente;
 
   @Column(name = "valor_total")
   private BigDecimal valorTotal;
@@ -41,6 +41,14 @@ public class Pedido {
   private List<ItensPedido> itens = new ArrayList<ItensPedido>();
 
   public Pedido() {
+  }
+
+  public Pedido(Long idPedido, LocalDate dtPedido, Cliente cliente, BigDecimal valorTotal, List<ItensPedido> itens) {
+    this.idPedido = idPedido;
+    this.dtPedido = dtPedido;
+    this.cliente = cliente;
+    this.valorTotal = valorTotal;
+    this.itens = itens;
   }
 
   public Long getIdPedido() {
@@ -60,11 +68,11 @@ public class Pedido {
   }
 
   public Cliente getCliente() {
-    return this.idCliente;
+    return this.cliente;
   }
 
   public void setCliente(Cliente cliente) {
-    this.idCliente = cliente;
+    this.cliente = cliente;
   }
 
   public BigDecimal getValorTotal() {
@@ -76,7 +84,7 @@ public class Pedido {
   }
 
   public List<ItensPedido> getItens() {
-    return itens;
+    return this.itens;
   }
 
   public void setItens(List<ItensPedido> itens) {

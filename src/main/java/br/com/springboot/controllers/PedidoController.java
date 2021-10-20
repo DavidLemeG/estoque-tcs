@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,15 +15,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
-import br.com.springboot.DTO.PedidoVendaDTO;
+import br.com.springboot.models.Cliente;
 import br.com.springboot.models.ItensPedido;
 import br.com.springboot.models.Pedido;
+import br.com.springboot.models.Produto;
+import br.com.springboot.repository.ClienteRepository;
 import br.com.springboot.repository.PedidoRepository;
+import br.com.springboot.repository.ProdutoRepository;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/pedido")
 public class PedidoController {
+
+  @Autowired
+  private ProdutoRepository produtoRepository;
+
+  @Autowired
+  private ClienteRepository cliRepository;
 
   @Autowired
   private PedidoRepository pedidoRepository;
@@ -46,24 +58,30 @@ public class PedidoController {
 
   @PostMapping("/")
   public ResponseEntity<Object> createPedido(@RequestBody Pedido pedido) {
+    for (ItensPedido item : pedido.getItens()) {
+      Produto produto = produtoRepository.findOneByIdProduto(item.getProduto().getIdProduto());
+      if(produto.getQuantidadeEstoque() < item.getQuantidade()){
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Quantidade requisitada não disponivel");
+      }
+    }
 
+    Cliente cliente = cliRepository.findOneByIdCliente(pedido.getCliente().getIdCliente());
     Pedido pedVenda = new Pedido();
-    // pedVenda.setItens(pedidoVendaDTO.getItensPedido());
-    
-    // for (ItensPedido item : pedidoVendaDTO.getItensPedido()) {
-    //   item.setPedido(pedidoVendaDTO.getPedidoVenda());
-    //   pedidoVendaDTO.getPedidoVenda().getItens().add(item);
-    // }
-    // BigDecimal total = BigDecimal.ZERO;
-    // for (ItensPedido item : pedidoVendaDTO.getPedidoVenda().getItens()) {
-    //   BigDecimal qtde = new BigDecimal(item.getQuantidade());
-    //   BigDecimal totalItem = item.getValor().multiply(qtde);
-    //   total = total.add(totalItem);
-    // }
-    
-    // pedidoVendaDTO.getPedidoVenda().setValorTotal(total);
-    
-    
+    pedVenda.setCliente(cliente);
+    pedVenda.setDtPedido(pedido.getDtPedido());
+    pedVenda.setValorTotal(pedido.getValorTotal());
+
+    for (ItensPedido item : pedido.getItens()) {
+      Produto produto = produtoRepository.findOneByIdProduto(item.getProduto().getIdProduto());
+      item.setProduto(produto);
+      item.setPedido(pedVenda);
+      pedVenda.getItens().add(item);
+
+      produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - item.getQuantidade());
+
+      produtoRepository.save(produto);
+    }
+
     this.pedidoRepository.save(pedVenda);
 
     return new ResponseEntity<Object>(pedido, HttpStatus.ACCEPTED);

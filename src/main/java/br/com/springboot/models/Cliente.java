@@ -17,7 +17,7 @@ public class Cliente {
   @Column(length = 100, nullable = false)
   private String nome;
 
-  @Column(length = 11, nullable = false)
+  @Column(length = 14, nullable = false)
   private String cpf;
 
   @Column(length = 1, nullable = false)
@@ -33,13 +33,27 @@ public class Cliente {
 
   private String uf;
 
-  @Column(length = 10)
+  @Column(length = 14)
   private String telefone;
 
-  @Column(length = 11)
+  @Column(length = 15)
   private String celular;
 
   public Cliente() {
+  }
+
+  public Cliente(Long idCliente, String nome, String cpf, String sexo, String logradouro, String cep, String bairro, String cidade, String uf, String telefone, String celular) {
+    this.idCliente = idCliente;
+    this.nome = nome;
+    this.cpf = cpf;
+    this.sexo = sexo;
+    this.logradouro = logradouro;
+    this.cep = cep;
+    this.bairro = bairro;
+    this.cidade = cidade;
+    this.uf = uf;
+    this.telefone = telefone;
+    this.celular = celular;
   }
 
   public Long getIdCliente() {

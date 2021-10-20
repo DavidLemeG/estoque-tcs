@@ -4,9 +4,11 @@ import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,16 +21,25 @@ public class ItensPedido {
   @Column(name = "id_itens_pedido")
   private Long idItensPedido;
 
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "id_pedido")
   @JsonIgnore
-  @ManyToOne
   private Pedido pedido;
 
   @ManyToOne
-  private Produto idProduto;
+  private Produto produto;
 
-  private Double quantidade;
+  private int quantidade;
 
   private BigDecimal valor;
+
+  public ItensPedido(Long idItensPedido, Pedido pedido, Produto produto, int quantidade, BigDecimal valor) {
+    this.idItensPedido = idItensPedido;
+    this.pedido = pedido;
+    this.produto = produto;
+    this.quantidade = quantidade;
+    this.valor = valor;
+  }
 
   public ItensPedido() {
   }
@@ -50,18 +61,18 @@ public class ItensPedido {
   }
 
   public Produto getProduto() {
-    return this.idProduto;
+    return this.produto;
   }
 
   public void setProduto(Produto produto) {
-    this.idProduto = produto;
+    this.produto = produto;
   }
 
-  public Double getQuantidade() {
+  public int getQuantidade() {
     return this.quantidade;
   }
 
-  public void setQuantidade(Double quantidade) {
+  public void setQuantidade(int quantidade) {
     this.quantidade = quantidade;
   }
 
@@ -72,7 +83,6 @@ public class ItensPedido {
   public void setValor(BigDecimal valor) {
     this.valor = valor;
   }
-
 
   @Override
   public String toString() {

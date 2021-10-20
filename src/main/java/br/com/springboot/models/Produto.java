@@ -25,6 +25,13 @@ public class Produto {
   @Column(name = "quantidade_estoque")
   private int quantidadeEstoque;
 
+  public Produto(String descricao, String tipoProduto, Double valor, int quantidadeEstoque) {
+    this.descricao = descricao;
+    this.tipoProduto = tipoProduto;
+    this.valor = valor;
+    this.quantidadeEstoque = quantidadeEstoque;
+  }
+
   public Produto() {
   }
 
@@ -66,6 +73,17 @@ public class Produto {
 
   public void setQuantidadeEstoque(int quantidadeEstoque) {
     this.quantidadeEstoque = quantidadeEstoque;
+  }
+
+  @Override
+  public String toString() {
+    return "{" +
+      " idProduto='" + getIdProduto() + "'" +
+      ", descricao='" + getDescricao() + "'" +
+      ", tipoProduto='" + getTipoProduto() + "'" +
+      ", valor='" + getValor() + "'" +
+      ", quantidadeEstoque='" + getQuantidadeEstoque() + "'" +
+      "}";
   }
 
 }
