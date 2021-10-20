@@ -1,7 +1,8 @@
 # Conteúdos para baixar:
 
   Mavem: 3.6.3 ou uma versão superior.\
-  Java SpringBoot: jdk 1.8.0_291.
+  Java SpringBoot: jdk 1.8.0_291.\
+  Banco MySQL: É preciso ter o MySQL e pelo workbench criar um banco chamado tcs.
   
 ## Para compilar o projeto é preciso abrir e digitar os seguintes comandos:
 
