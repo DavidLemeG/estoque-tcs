@@ -8,6 +8,6 @@
 ### mvn install    * para instalar as dependencias do SpringBoot.
 ### mvn spring-tools:run
 
-ps: Dentro do projeto está a collection de todos os métodos que são usados no projeto.\
+ps: Dentro do projeto está a collection de todos os métodos que são usados no projeto.
 
 front-end: https://github.com/DavidLemeG/front-tcs
